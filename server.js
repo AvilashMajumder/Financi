@@ -25,4 +25,5 @@ connectDB()
 })
 .catch((err) => {
     console.log("MongoDB connection failed, server not started ", err);
+    process.exit(1);
 })
