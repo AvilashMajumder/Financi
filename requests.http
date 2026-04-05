@@ -1,0 +1,153 @@
+### Financi API Requests
+### Base URL
+@baseUrl = http://localhost:5000
+@accessToken = PASTE_ACCESS_TOKEN_HERE
+@refreshToken = PASTE_REFRESH_TOKEN_HERE
+@userId = PASTE_USER_ID_HERE
+@transactionId = PASTE_TRANSACTION_ID_HERE
+
+### ============ USER ROUTES ============
+
+### Register user
+POST {{baseUrl}}/api/users/register
+Content-Type: application/json
+
+{
+  "username": "adminuser",
+  "email": "admin@finance.com",
+  "password": "Admin@123",
+  "role": "admin"
+}
+
+### Login user
+POST {{baseUrl}}/api/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@finance.com",
+  "password": "Admin@123"
+}
+
+### Get current user
+GET {{baseUrl}}/api/users/me
+Authorization: Bearer {{accessToken}}
+
+### Refresh access token
+GET {{baseUrl}}/api/users/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Logout user
+POST {{baseUrl}}/api/users/logout
+Authorization: Bearer {{accessToken}}
+
+### Change password
+PUT {{baseUrl}}/api/users/change-password
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "oldPassword": "Admin@123",
+  "newPassword": "NewPass@456"
+}
+
+### Get all users (admin only)
+GET {{baseUrl}}/api/users
+Authorization: Bearer {{accessToken}}
+
+### Get user by id (admin only)
+GET {{baseUrl}}/api/users/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+### Update user role (admin only)
+PATCH {{baseUrl}}/api/users/{{userId}}/role
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "role": "analyst"
+}
+
+### Update user status (admin only)
+PATCH {{baseUrl}}/api/users/{{userId}}/status
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "isActive": false
+}
+
+### Delete user (admin only)
+DELETE {{baseUrl}}/api/users/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+### ============ TRANSACTION ROUTES ============
+
+### Create income transaction (admin only)
+POST {{baseUrl}}/api/transactions
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "amount": 5000,
+  "type": "income",
+  "category": "Salary",
+  "date": "2026-04-01",
+  "notes": "Monthly salary"
+}
+
+### Create expense transaction (admin only)
+POST {{baseUrl}}/api/transactions
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "amount": 1200,
+  "type": "expense",
+  "category": "Rent",
+  "date": "2026-04-01",
+  "notes": "Monthly rent"
+}
+
+### Get all transactions (analyst or admin)
+GET {{baseUrl}}/api/transactions
+Authorization: Bearer {{accessToken}}
+
+### Get transaction by id (analyst or admin)
+GET {{baseUrl}}/api/transactions/{{transactionId}}
+Authorization: Bearer {{accessToken}}
+
+### Update transaction (admin only)
+PATCH {{baseUrl}}/api/transactions/{{transactionId}}
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "amount": 5500,
+  "notes": "Updated salary"
+}
+
+### Delete transaction (admin only)
+DELETE {{baseUrl}}/api/transactions/{{transactionId}}
+Authorization: Bearer {{accessToken}}
+
+### ============ DASHBOARD ROUTES ============
+
+### Dashboard summary (analyst or admin)
+GET {{baseUrl}}/api/dashboard/summary
+Authorization: Bearer {{accessToken}}
+
+### Dashboard category totals (analyst or admin)
+GET {{baseUrl}}/api/dashboard/category-totals
+Authorization: Bearer {{accessToken}}
+
+### Dashboard recent activity (analyst or admin)
+GET {{baseUrl}}/api/dashboard/recent-activity?limit=5
+Authorization: Bearer {{accessToken}}
+
+### Dashboard insights (analyst or admin)
+GET {{baseUrl}}/api/dashboard/insights
+Authorization: Bearer {{accessToken}}
