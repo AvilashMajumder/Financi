@@ -7,7 +7,7 @@ import dashboardRouter from './routes/Dashboard.route.js';
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 app.use(cookieParser());
 
 // Health check endpoint
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.json({ 
         message: 'Financi API is running!',
         status: 'Server is operational',
-        timestamp: new Date().toISOString(),
+        timestamp: new Date(),
         endpoints: {
             users: '/api/users',
             transactions: '/api/transactions',
