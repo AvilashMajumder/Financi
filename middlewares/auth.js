@@ -24,7 +24,19 @@ export const verifyJWT = async(req, res, next) => {
         next() 
         }
         catch(error){
-            return res.status(401).json({ message: "Authentication failed, invalid token" });
+            if (error?.name === "TokenExpiredError") {
+                return res.status(401).json({ message: "Authentication failed, token expired" });
+            }
+
+            if (error?.name === "JsonWebTokenError") {
+                return res.status(401).json({ message: "Authentication failed, invalid token" });
+            }
+
+            if (error?.name === "NotBeforeError") {
+                return res.status(401).json({ message: "Authentication failed, token not active yet" });
+            }
+
+            return res.status(500).json({ message: "Authentication failed due to server error" });
         }
 };
 
@@ -33,7 +45,7 @@ export const requireAdmin = (req, res, next) => {
         if (!req.user) {
         return res.status(401).json({ message: "Unauthorized" });
         }
-        if (req.user?.role !== "admin") {
+    if ((req.user?.role || "").toLowerCase() !== "admin") {
         return res.status(403).json({ message: "Forbidden: Admins access required" });
         }
         next();
@@ -44,7 +56,7 @@ export const requireAnalystOrAdmin = (req, res, next) => {
         if (!req.user) {
         return res.status(401).json({ message: "Unauthorized" });
         }
-        if (!["analyst", "admin"].includes(req.user?.role)){
+    if (!["analyst", "admin"].includes((req.user?.role || "").toLowerCase())){
         return res.status(403).json({ message: "Forbidden: Analyst or Admin access required" });
         }
         next();
