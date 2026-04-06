@@ -44,9 +44,11 @@ npm install
 npm start
 ```
 
-Default base URL: `http://localhost:5000`
-
 Live base URL: `https://financi.onrender.com`
+
+Github: `https://github.com/AvilashMajumder/Financi`
+
+API Docs: `https://documenter.getpostman.com/view/46980225/2sBXiqF9Ww`
 
 ## API Testing (Postman)
 
