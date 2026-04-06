@@ -46,6 +46,8 @@ npm start
 
 Default base URL: `http://localhost:5000`
 
+Live base URL: `https://financi.onrender.com`
+
 ## API Testing (Postman)
 
 Use the published Postman documentation to test all endpoints quickly:
