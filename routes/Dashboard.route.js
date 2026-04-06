@@ -12,6 +12,6 @@ const router = Router();
 router.get("/summary", verifyJWT, requireAnalystOrAdmin, getSummary);
 router.get("/category-totals", verifyJWT, requireAnalystOrAdmin, getCategoryTotals);
 router.get("/recent-activity", verifyJWT, requireAnalystOrAdmin, getRecentActivity);
-router.get("/insights", verifyJWT, requireAnalystOrAdmin, getDashboardInsights);
+router.get("/insights", verifyJWT,  getDashboardInsights);
 
 export default router;

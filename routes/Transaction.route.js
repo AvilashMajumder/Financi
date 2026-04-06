@@ -10,15 +10,12 @@ import { verifyJWT, requireAdmin, requireAnalystOrAdmin } from "../middlewares/a
 
 const router = Router();
 
-router
-	.route("/")
-	.post(verifyJWT, requireAdmin, createTransaction)
-	.get(verifyJWT, requireAnalystOrAdmin, getAllTransactions);
+router.post("/", verifyJWT, requireAdmin, createTransaction)
+router.get("/", verifyJWT, requireAnalystOrAdmin, getAllTransactions);
 
-router
-	.route("/:id")
-	.get(verifyJWT, requireAnalystOrAdmin, getTransactionById)
-	.patch(verifyJWT, requireAdmin, updateTransaction)
-	.delete(verifyJWT, requireAdmin, deleteTransaction);
+
+router.get("/:id", verifyJWT, requireAnalystOrAdmin, getTransactionById)
+router.patch("/:id", verifyJWT, requireAdmin, updateTransaction)
+router.delete("/:id", verifyJWT, requireAdmin, deleteTransaction);
 
 export default router;

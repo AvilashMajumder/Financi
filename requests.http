@@ -148,6 +148,6 @@ Authorization: Bearer {{accessToken}}
 GET {{baseUrl}}/api/dashboard/recent-activity?limit=5
 Authorization: Bearer {{accessToken}}
 
-### Dashboard insights (analyst or admin)
+### Dashboard insights (any authenticated active user)
 GET {{baseUrl}}/api/dashboard/insights
 Authorization: Bearer {{accessToken}}

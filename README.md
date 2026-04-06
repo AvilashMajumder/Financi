@@ -59,7 +59,7 @@ Default base URL: `http://localhost:5000`
 ## Access Rules
 
 - Public: register, login, refresh-token
-- Authenticated: logout, me, change-password
+- Authenticated: logout, me, change-password, dashboard insights
 - Admin only: users list/read/update/delete, transaction create/update/delete
 - Analyst or Admin: transaction read routes, dashboard routes
 
@@ -107,7 +107,7 @@ To keep this README concise, full API request examples and testing flow are main
 - Transaction type in DB is stored as `Income` or `Expense`.
 - `GET /api/transactions` currently returns all transactions sorted by date, without pagination.
 - `GET /api/dashboard/recent-activity` supports `?limit=<number>`.
-- Project does not include automated tests yet; `npm test` is a placeholder script.
+
 
 ## Data Models
 
@@ -164,12 +164,6 @@ Common error payload format:
 }
 ```
 
-Representative examples used in the project:
 
-- `400`: `"Amount, type, and category are required"`, `"Type must be income or expense"`
-- `401`: `"Invalid credentials"`, `"Invalid or expired refresh token"`
-- `403`: `"Forbidden: Admins access required"`, `"Account is inactive"`
-- `404`: `"User not found"`, `"Transaction not found"`
-- `409`: `"User with this email or username already exists"`
 
 
