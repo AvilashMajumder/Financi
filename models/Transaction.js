@@ -15,9 +15,8 @@ const transactionSchema = new mongoose.Schema(
 
 // Used to filter out deleted transactions in all find queries(find, findOne, findById, findOneAndUpdate, etc.), so that they are not returned in results
 // Internally works as Transaction.find({isDeleted: false}) // return all non deleted transactions
-transactionSchema.pre(/^find/, function(next){
+transactionSchema.pre(/^find/, function(){
     this.where({isDeleted: false});
-    next();
 });
 
 export const Transaction = mongoose.model("Transaction", transactionSchema);
