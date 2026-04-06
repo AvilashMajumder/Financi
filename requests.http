@@ -6,6 +6,8 @@
 @userId = PASTE_USER_ID_HERE
 @transactionId = PASTE_TRANSACTION_ID_HERE
 
+Postman Collection Link: https://documenter.getpostman.com/view/46980225/2sBXiqF9Ww
+
 ### ============ USER ROUTES ============
 
 ### Register user
