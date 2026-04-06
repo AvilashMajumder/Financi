@@ -34,7 +34,7 @@
         const messages = Object.values(err.errors).map((e) => e.message);
         return res.status(400).json({ message: messages.join(", ") });
         }
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
     };
 
@@ -46,7 +46,7 @@
 
         return res.status(200).json({ transactions });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
     };
 
@@ -63,7 +63,7 @@
 
         return res.status(200).json(transaction);
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
     };
 
@@ -104,7 +104,7 @@
         const messages = Object.values(err.errors).map((e) => e.message);
         return res.status(400).json({ message: messages.join(", ") });
         }
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
     };
 
@@ -121,6 +121,6 @@
 
         return res.status(200).json({ message: "Transaction deleted successfully" });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
     };

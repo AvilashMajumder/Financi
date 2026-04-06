@@ -116,7 +116,7 @@ export const loginUser = async (req, res) => {
                 },
             });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -140,7 +140,7 @@ export const logoutUser = async (req, res) => {
             .clearCookie("refreshToken", options)
             .json({ message: "Logged out successfully" });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -176,7 +176,7 @@ export const refreshAccessToken = async (req, res) => {
             .cookie("refreshToken", refreshToken, options)
             .json({ accessToken, refreshToken });
     } catch (err) {
-        return res.status(401).json({ message: "Invalid or expired refresh token" });
+        return res.status(401).json({ message: err.message });
     }
 };
 
@@ -195,7 +195,7 @@ export const getUserById = async (req, res) => {
         if (!user) return res.status(404).json({ message: "User not found" });
         return res.status(200).json(user);
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -220,7 +220,7 @@ export const updateUserRole = async (req, res) => {
 
         return res.status(200).json({ message: "Role updated", user });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -244,7 +244,7 @@ export const updateUserStatus = async (req, res) => {
             user,
         });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -258,7 +258,7 @@ export const deleteUser = async (req, res) => {
 
         return res.status(200).json({ message: "User deleted successfully" });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -298,7 +298,7 @@ export const changePassword = async (req, res) => {
 
         return res.status(200).json({ message: "Password changed successfully" });
     } catch (err) {
-        return res.status(500).json({ message: "Server error" });
+        return res.status(500).json({ message: err.message });
     }
 };
 

@@ -14,7 +14,7 @@ import { Transaction } from "../models/Transaction.js";
 
         res.status(200).json({ totalIncome, totalExpenses, netBalance: totalIncome - totalExpenses });
     } catch (err) {
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({ message: err.message });
     }
     };
 
@@ -36,7 +36,7 @@ import { Transaction } from "../models/Transaction.js";
 
         res.status(200).json(totals);
     } catch (err) {
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({ message: err.message });
     }
     };
 
@@ -51,7 +51,7 @@ import { Transaction } from "../models/Transaction.js";
 
         res.status(200).json(transactions);
     } catch (err) {
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({ message: err.message });
     }
     };
 
@@ -74,6 +74,6 @@ import { Transaction } from "../models/Transaction.js";
         recentActivity: transactions.slice(0, 5),
         });
     } catch (err) {
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({ message: err.message });
     }
     };
