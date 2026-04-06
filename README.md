@@ -21,12 +21,45 @@ Financi is a finance tracking backend API built with Node.js, Express, and Mongo
 
 ## Project Structure
 
-- [app.js](app.js): Express middleware and route mounting
-- [server.js](server.js): Environment setup, DB connect, server start
-- [controllers/](controllers): Business logic
-- [routes/](routes): API route mapping
-- [models/](models): Mongoose schemas
-- [middlewares/auth.js](middlewares/auth.js): JWT and role guards
+```text
+Financi/
+|-- app.js
+|-- server.js
+|-- package.json
+|-- requests.http
+|-- .env.example
+|-- controllers/
+|   |-- User.controller.js
+|   |-- Transaction.controller.js
+|   |-- Dashboard.controller.js
+|-- routes/
+|   |-- User.route.js
+|   |-- Transaction.route.js
+|   |-- Dashboard.route.js
+|-- models/
+|   |-- User.js
+|   |-- Transaction.js
+|-- middlewares/
+|   |-- auth.js
+|-- db/
+|   |-- index.js
+```
+
+### File Responsibilities
+
+- [server.js](server.js): Entry point, loads environment, connects database, starts HTTP server.
+- [app.js](app.js): Express app setup, middleware registration, route mounting, health endpoint.
+- [db/index.js](db/index.js): MongoDB connection initialization.
+- [middlewares/auth.js](middlewares/auth.js): JWT validation and role-based access guards.
+- [controllers/User.controller.js](controllers/User.controller.js): User registration, login, token refresh, profile/admin operations.
+- [controllers/Transaction.controller.js](controllers/Transaction.controller.js): Transaction CRUD and validation logic.
+- [controllers/Dashboard.controller.js](controllers/Dashboard.controller.js): Summary, category totals, activity, and insights logic.
+- [routes/User.route.js](routes/User.route.js): User endpoint definitions and guard wiring.
+- [routes/Transaction.route.js](routes/Transaction.route.js): Transaction endpoint definitions and guard wiring.
+- [routes/Dashboard.route.js](routes/Dashboard.route.js): Dashboard endpoint definitions and guard wiring.
+- [models/User.js](models/User.js): User schema, password hashing, password comparison method.
+- [models/Transaction.js](models/Transaction.js): Transaction schema and soft-delete query filtering.
+- [requests.http](requests.http): Ready-to-run API request collection for manual testing.
 
 ## Setup
 
