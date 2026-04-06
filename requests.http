@@ -1,6 +1,6 @@
 ### Financi API Requests
 ### Base URL
-@baseUrl = http://localhost:5000
+@baseUrl = https://financi.onrender.com
 @accessToken = PASTE_ACCESS_TOKEN_HERE
 @refreshToken = PASTE_REFRESH_TOKEN_HERE
 @userId = PASTE_USER_ID_HERE
