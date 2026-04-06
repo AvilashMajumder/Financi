@@ -46,6 +46,12 @@ npm start
 
 Default base URL: `http://localhost:5000`
 
+## API Testing (Postman)
+
+Use the published Postman documentation to test all endpoints quickly:
+
+### [Open Postman Docs](https://documenter.getpostman.com/view/46980225/2sBXiqF9Ww)
+
 ## Environment Variables
 
 - `PORT`
@@ -100,6 +106,7 @@ To keep this README concise, full API request examples and testing flow are main
 
 - Use [requests.http](requests.http) for ready-to-run endpoint requests.
 - The same file can be used to capture actual responses during assessment/demo.
+- Postman Docs (public): [https://documenter.getpostman.com/view/46980225/2sBXiqF9Ww](https://documenter.getpostman.com/view/46980225/2sBXiqF9Ww)
 - This README focuses on architecture, setup, access rules, and endpoint inventory.
 
 ## Important Implementation Notes
